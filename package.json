@@ -1,0 +1,32 @@
+{
+  "name": "focus",
+  "version": "1.0.0",
+  "private": true,
+  "description": "focus",
+  "author": "Autin Mitra",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "gatsby": "^2.32.3",
+    "gatsby-image": "^2.11.0",
+    "gatsby-plugin-mdx": "^1.10.0",
+    "gatsby-plugin-offline": "^3.10.0",
+    "gatsby-plugin-sharp": "^2.14.1",
+    "gatsby-plugin-theme-ui": "^0.3.5",
+    "gatsby-source-filesystem": "^2.11.0",
+    "gatsby-transformer-sharp": "^2.12.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "theme-ui": "^0.3.5"
+  }
+}
