@@ -48,4 +48,11 @@ This is a hackathon, we got 24 hours (some of which I'd like to use for sleep), 
   We could probably solve this problem with some rotating crypto style-stuff (kinda like U2F), and NOT communicating over web requests (we only did this for demo/concept purposes).
 - Better performance. Not running ML predictions on a separate WebWorker is... yikes.
 
+# Screenshots
+![home](./screenshots/home.png)
+
+![settings](./screenshots/settings.png)
+
+![about](./screenshots/about.png)
+
 ## Somehow you made it down here, and we hoped you enjoyed this project!
