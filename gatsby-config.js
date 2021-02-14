@@ -5,12 +5,25 @@ module.exports = {
   plugins: [
     "gatsby-plugin-theme-ui",
     "gatsby-plugin-sharp",
-    "gatsby-plugin-offline",
-    "gatsby-plugin-mdx",
     {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/components/layout`),
+      },
+    },
+    "gatsby-plugin-offline",
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              withWebp: true,
+              linkImagesToOriginal: true,
+            }
+          },
+        ],
       },
     },
     "gatsby-transformer-sharp",

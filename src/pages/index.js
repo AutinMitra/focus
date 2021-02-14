@@ -125,6 +125,7 @@ const IndexPage = () => {
     <Flex
       sx={{
         p: 5,
+        height: '100vh'
       }}
     >
       <Flex
@@ -230,6 +231,7 @@ const IndexPage = () => {
           }}
         >
           <Webcam
+            audio={false}
             ref={webcam}
             sx={{
               m: 'auto',

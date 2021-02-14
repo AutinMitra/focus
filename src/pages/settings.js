@@ -91,7 +91,7 @@ const SettingsCardInputCheckmark = ({
     console.log(!checked)
     onCheckChange(!checked)
     setChecked(!checked)
-  })
+  }, [checked])
 
   return (
     <Flex
