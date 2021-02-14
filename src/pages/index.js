@@ -14,6 +14,9 @@ import { useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerAnimation } from '../animation/animations'
 
+import chime from '../audio/chime.mp3'
+import bruhShiJian from '../audio/bruhshijian.mp3'
+
 tfjsWasm.setWasmPaths(
   `https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@${tfjsWasm.version_wasm}/dist/`
 )
@@ -53,8 +56,10 @@ const IndexPage = () => {
   const webcam = useRef(null)
   const canvas = useRef(null)
   const timer = useRef(null)
-  const audio = useRef(typeof window !== 'undefined' ?
-    (new Audio(bruhShiJianEnabled ? '/bruhshijian.mp3' : '/chime.mp3')) : null
+  const audio = useRef(
+    typeof window !== 'undefined'
+      ? new Audio(bruhShiJianEnabled ? bruhShiJian : chime)
+      : null
   )
 
   const checkIfCarRunning = useCallback(async (URI) => {

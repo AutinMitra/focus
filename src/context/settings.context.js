@@ -2,7 +2,6 @@
 import { jsx } from 'theme-ui'
 import { createContext, useEffect, useState, useContext } from 'react'
 
-const isBrowser = typeof window !== 'undefined'
 
 const defaultValues = {
   earThreshold: 0.3,
@@ -18,9 +17,9 @@ const defaultValues = {
 const SettingsContext = createContext({})
 
 export const SettingsProvider = ({ children }) => {
-  let providerInfo =  JSON.stringify(defaultValues)
+  let providerInfo = JSON.stringify(defaultValues)
 
-  if (isBrowser && localStorage.getItem('settings'))
+  if (typeof window !== 'undefined' && localStorage.getItem('settings'))
     providerInfo = localStorage.getItem('settings')
 
   const {
@@ -50,7 +49,7 @@ export const SettingsProvider = ({ children }) => {
   )
 
   useEffect(() => {
-    if (isBrowser && localStorage.getItem('settings'))
+    if (typeof window !== 'undefined')
       localStorage.setItem(
         'settings',
         JSON.stringify({
@@ -76,7 +75,7 @@ export const SettingsProvider = ({ children }) => {
   ])
 
   const resetSettings = () => {
-    if (isBrowser && localStorage.getItem('settings'))
+    if (typeof window !== 'undefined')
       localStorage.removeItem('settings')
 
     const {
