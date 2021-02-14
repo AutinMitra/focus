@@ -1,6 +1,8 @@
 # Focus
 #### By Autin Mitra, Andrew Lam, Andrew Xie, and David Liu
 
+⭐ nice, YuRide Challenge Winner
+
 ## What is Focus?
 Focus is a web-based utility for preventing fatigue-based car accidents. 
 It detects and alerts both drivers and vehicle systems to potential drowsiness - helping to prevent accidents.
