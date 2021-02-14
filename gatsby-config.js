@@ -7,6 +7,12 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-plugin-offline",
     "gatsby-plugin-mdx",
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout`),
+      },
+    },
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
