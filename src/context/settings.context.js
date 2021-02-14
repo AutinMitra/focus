@@ -18,7 +18,7 @@ const defaultValues = {
 const SettingsContext = createContext({})
 
 export const SettingsProvider = ({ children }) => {
-  const providerInfo =  JSON.stringify(defaultValues)
+  let providerInfo =  JSON.stringify(defaultValues)
 
   if (isBrowser && localStorage.getItem('settings'))
     providerInfo = localStorage.getItem('settings')
