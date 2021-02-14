@@ -1,17 +1,17 @@
 module.exports = {
   siteMetadata: {
-    title: "focus",
+    title: 'focus',
   },
   plugins: [
-    "gatsby-plugin-theme-ui",
-    "gatsby-plugin-sharp",
+    'gatsby-plugin-theme-ui',
+    'gatsby-plugin-sharp',
     {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/components/layout`),
       },
     },
-    "gatsby-plugin-offline",
+    'gatsby-plugin-offline',
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -21,27 +21,27 @@ module.exports = {
             options: {
               withWebp: true,
               linkImagesToOriginal: true,
-            }
+            },
           },
         ],
       },
     },
-    "gatsby-transformer-sharp",
+    'gatsby-transformer-sharp',
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "images",
-        path: "./src/images/",
+        name: 'images',
+        path: './src/images/',
       },
-      __key: "images",
+      __key: 'images',
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "pages",
-        path: "./src/pages/",
+        name: 'pages',
+        path: './src/pages/',
       },
-      __key: "pages",
+      __key: 'pages',
     },
   ],
-};
+}

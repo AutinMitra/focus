@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { createContext, useEffect, useState, useContext, Fragment } from 'react'
+import { createContext, useEffect, useState, useContext } from 'react'
 
 const defaultValues = {
   earThreshold: 0.3,
@@ -10,7 +10,7 @@ const defaultValues = {
   sendAlertToURI: '',
   carSpeedCheckEnabled: false,
   carSpeedCheckURI: '',
-  bruhShiJianEnabled: false
+  bruhShiJianEnabled: false,
 }
 
 const SettingsContext = createContext({})
@@ -27,7 +27,7 @@ export const SettingsProvider = ({ children }) => {
     sendAlertToURI,
     carSpeedCheckEnabled,
     carSpeedCheckURI,
-    bruhShiJianEnabled
+    bruhShiJianEnabled,
   } = JSON.parse(providerInfo)
 
   const [earThresholdVal, setEarThreshold] = useState(earThreshold)
@@ -41,7 +41,9 @@ export const SettingsProvider = ({ children }) => {
     carSpeedCheckEnabled
   )
   const [carSpeedCheckURIVal, setCarSpeedCheckURI] = useState(carSpeedCheckURI)
-  const [bruhShiJianEnabledVal, setBruhShiJianEnabled] = useState(bruhShiJianEnabled)
+  const [bruhShiJianEnabledVal, setBruhShiJianEnabled] = useState(
+    bruhShiJianEnabled
+  )
 
   useEffect(() => {
     localStorage.setItem(

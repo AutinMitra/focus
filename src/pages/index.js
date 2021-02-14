@@ -45,7 +45,7 @@ const IndexPage = () => {
     sendAlertToURI,
     carSpeedCheckEnabled,
     carSpeedCheckURI,
-    bruhShiJianEnabled
+    bruhShiJianEnabled,
   } = useSettingsInfo()
 
   const [earState, setEarState] = useState({ left: 0.5, right: 0.5 })
@@ -53,7 +53,9 @@ const IndexPage = () => {
   const webcam = useRef(null)
   const canvas = useRef(null)
   const timer = useRef(null)
-  const audio = useRef(new Audio(bruhShiJianEnabled ? '/bruhshijian.mp3' : '/chime.mp3'))
+  const audio = useRef(
+    new Audio(bruhShiJianEnabled ? '/bruhshijian.mp3' : '/chime.mp3')
+  )
 
   const checkIfCarRunning = useCallback(async (URI) => {
     try {
@@ -62,7 +64,7 @@ const IndexPage = () => {
     } catch (e) {
       console.log('Error fetching car info')
     }
-  })
+  }, [])
 
   const callAlertToURI = useCallback((URI) => {
     try {
@@ -70,7 +72,7 @@ const IndexPage = () => {
     } catch (e) {
       console.log('Error alerting URI')
     }
-  })
+  }, [])
 
   useEffect(() => {
     const doPredictions = async () => {
@@ -99,7 +101,7 @@ const IndexPage = () => {
     return () => {
       clearInterval(timer.current)
     }
-  }, [])
+  }, [frameLookback, maxFPS])
 
   useEffect(() => {
     audio.current.volume = 0.5
@@ -125,13 +127,16 @@ const IndexPage = () => {
     sendAlertToEnabled,
     carSpeedCheckURI,
     carSpeedCheckEnabled,
+    checkIfCarRunning,
+    callAlertToURI,
+    earThreshold,
   ])
 
   return (
     <Flex
       sx={{
         p: 5,
-        height: '100vh'
+        height: '100vh',
       }}
     >
       <Flex
@@ -144,7 +149,11 @@ const IndexPage = () => {
           flex: 1,
         }}
       >
-        <motion.div initial='initial' animate='animate' variants={staggerAnimation}>
+        <motion.div
+          initial='initial'
+          animate='animate'
+          variants={staggerAnimation}
+        >
           <Box
             sx={{
               p: 3,
@@ -256,7 +265,6 @@ const IndexPage = () => {
             sx={{
               m: 'auto',
               width: '100%',
-              m: 'auto',
               px: 'inherit',
               pb: 'inherit',
               position: 'absolute',

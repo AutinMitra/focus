@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { Heading, Button, Box, jsx } from 'theme-ui'
+import { Button, Box, jsx } from 'theme-ui'
 import { navigate } from 'gatsby'
 import { fadeInUp } from '../animation/animations'
 import { motion } from 'framer-motion'
@@ -9,7 +9,7 @@ const MdLayout = ({ children }) => {
     <Box
       sx={{
         p: 5,
-        m: 'auto'
+        m: 'auto',
       }}
     >
       <Button
@@ -20,9 +20,7 @@ const MdLayout = ({ children }) => {
         Go Home
       </Button>
       <motion.div variants={fadeInUp()}>
-      <Box sx={{maxWidth: '1000px'}}>
-        {children}
-      </Box>
+        <Box sx={{ maxWidth: '1000px' }}>{children}</Box>
       </motion.div>
     </Box>
   )

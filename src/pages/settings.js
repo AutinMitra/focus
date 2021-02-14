@@ -92,7 +92,7 @@ const SettingsCardInputCheckmark = ({
   const onCheck = useCallback(() => {
     onCheckChange(!checked)
     setChecked(!checked)
-  }, [checked])
+  }, [checked, onCheckChange])
 
   return (
     <Flex
@@ -163,7 +163,7 @@ const SettingsCardCheckmark = ({
   const onCheck = useCallback(() => {
     onCheckChange(!checked)
     setChecked(!checked)
-  }, [checked])
+  }, [checked, onCheckChange])
 
   return (
     <Flex
@@ -232,9 +232,9 @@ const SettingsPage = () => {
   } = useSettingsInfo()
 
   return (
-    <motion.div 
-      initial='initial' 
-      animate='animate' 
+    <motion.div
+      initial='initial'
+      animate='animate'
       variants={staggerAnimation}
       sx={{
         p: 5,
@@ -269,7 +269,7 @@ const SettingsPage = () => {
           Adjust parameters for drowsiness detection and alerts
         </Heading>
       </motion.div>
-      
+
       <motion.div variants={fadeInUp()}>
         <Grid
           sx={{
