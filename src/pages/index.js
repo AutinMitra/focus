@@ -53,8 +53,8 @@ const IndexPage = () => {
   const webcam = useRef(null)
   const canvas = useRef(null)
   const timer = useRef(null)
-  const audio = useRef(
-    new Audio(bruhShiJianEnabled ? '/bruhshijian.mp3' : '/chime.mp3')
+  const audio = useRef(typeof window !== 'undefined' ?
+    (new Audio(bruhShiJianEnabled ? '/bruhshijian.mp3' : '/chime.mp3')) : null
   )
 
   const checkIfCarRunning = useCallback(async (URI) => {

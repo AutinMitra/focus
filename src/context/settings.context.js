@@ -2,6 +2,8 @@
 import { jsx } from 'theme-ui'
 import { createContext, useEffect, useState, useContext } from 'react'
 
+const isBrowser = typeof window !== 'undefined'
+
 const defaultValues = {
   earThreshold: 0.3,
   maxFPS: 15,
@@ -16,8 +18,10 @@ const defaultValues = {
 const SettingsContext = createContext({})
 
 export const SettingsProvider = ({ children }) => {
-  const providerInfo =
-    localStorage.getItem('settings') ?? JSON.stringify(defaultValues)
+  const providerInfo =  JSON.stringify(defaultValues)
+
+  if (isBrowser && localStorage.getItem('settings'))
+    providerInfo = localStorage.getItem('settings')
 
   const {
     earThreshold,
@@ -46,19 +50,20 @@ export const SettingsProvider = ({ children }) => {
   )
 
   useEffect(() => {
-    localStorage.setItem(
-      'settings',
-      JSON.stringify({
-        earThreshold: earThresholdVal,
-        maxFPS: maxFPSVal,
-        frameLookback: frameLookbackVal,
-        sendAlertToEnabled: sendAlertToEnabledVal,
-        sendAlertToURI: sendAlertToURIVal,
-        carSpeedCheckEnabled: carSpeedCheckEnabledVal,
-        carSpeedCheckURI: carSpeedCheckURIVal,
-        bruhShiJianEnabled: bruhShiJianEnabledVal,
-      })
-    )
+    if (isBrowser && localStorage.getItem('settings'))
+      localStorage.setItem(
+        'settings',
+        JSON.stringify({
+          earThreshold: earThresholdVal,
+          maxFPS: maxFPSVal,
+          frameLookback: frameLookbackVal,
+          sendAlertToEnabled: sendAlertToEnabledVal,
+          sendAlertToURI: sendAlertToURIVal,
+          carSpeedCheckEnabled: carSpeedCheckEnabledVal,
+          carSpeedCheckURI: carSpeedCheckURIVal,
+          bruhShiJianEnabled: bruhShiJianEnabledVal,
+        })
+      )
   }, [
     earThresholdVal,
     maxFPSVal,
@@ -71,7 +76,8 @@ export const SettingsProvider = ({ children }) => {
   ])
 
   const resetSettings = () => {
-    localStorage.removeItem('settings')
+    if (isBrowser && localStorage.getItem('settings'))
+      localStorage.removeItem('settings')
 
     const {
       earThreshold,
