@@ -90,7 +90,6 @@ const SettingsCardInputCheckmark = ({
   const [checked, setChecked] = useState(enabled)
 
   const onCheck = useCallback(() => {
-    console.log(!checked)
     onCheckChange(!checked)
     setChecked(!checked)
   }, [checked])
@@ -150,6 +149,68 @@ const SettingsCardInputCheckmark = ({
   )
 }
 
+const SettingsCardCheckmark = ({
+  title,
+  description,
+  placeholder,
+  onCheckChange,
+  enabled,
+  inputValue,
+  ...props
+}) => {
+  const [checked, setChecked] = useState(enabled)
+
+  const onCheck = useCallback(() => {
+    onCheckChange(!checked)
+    setChecked(!checked)
+  }, [checked])
+
+  return (
+    <Flex
+      sx={{
+        p: 4,
+        bg: 'text',
+        color: 'background',
+        borderRadius: 'default',
+        alignItems: 'center',
+      }}
+      {...props}
+    >
+      <Box
+        sx={{
+          width: '100%',
+        }}
+      >
+        <Heading
+          as='h1'
+          sx={{
+            fontSize: 5,
+          }}
+        >
+          {title}
+        </Heading>
+        <Text
+          sx={{
+            fontSize: 3,
+            mt: 1,
+          }}
+        >
+          {description}
+        </Text>
+        <Label mt={2}>
+          <Checkbox
+            checked={checked}
+            onChange={() => {
+              onCheck()
+            }}
+          />
+          Enabled
+        </Label>
+      </Box>
+    </Flex>
+  )
+}
+
 const SettingsPage = () => {
   const {
     earThreshold,
@@ -159,6 +220,7 @@ const SettingsPage = () => {
     sendAlertToURI,
     carSpeedCheckEnabled,
     carSpeedCheckURI,
+    bruhShiJianEnabled,
     setEarThreshold,
     setMaxFPS,
     setFrameLookback,
@@ -166,6 +228,7 @@ const SettingsPage = () => {
     setSendAlertToURI,
     setCarSpeedCheckEnabled,
     setCarSpeedCheckURI,
+    setBruhShiJianEnabled,
   } = useSettingsInfo()
 
   return (
@@ -273,6 +336,14 @@ const SettingsPage = () => {
             inputValue={carSpeedCheckURI}
             onInputChange={(e) => {
               setCarSpeedCheckURI(e.target.value)
+            }}
+          />
+          <SettingsCardCheckmark
+            title='Bruh Shi Jian'
+            description={`bruh时间. If you are a judge, you probably won't get the meaning of this. It's a "funny" little inside joke.`}
+            enabled={bruhShiJianEnabled}
+            onCheckChange={(e) => {
+              setBruhShiJianEnabled(e)
             }}
           />
         </Grid>

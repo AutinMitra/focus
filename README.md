@@ -6,6 +6,11 @@ Focus is a web-based utility for preventing fatigue-based car accidents.
 It detects and alerts both drivers and vehicle systems to potential drowsiness - helping to prevent accidents.
 This software is built to be easily ported to older vehicle independent of a "central compute unit" or a newer vehicle with one
 
+## Why?
+When you are rolling down the highway in a two-ton death machine, the last thing you wanna do is take your eyes off the road or fall asleep.
+This program prevents and alerts drivers/vehicles to possible fatigue/drowsiness, preventing possible accidents.
+
+
 ## What technologies does it use?
 We use GatsbyJS with theme-ui for our frontend visuals. We also combine [framer-motion](https://www.framer.com/motion/), for fancy animations
 
@@ -41,5 +46,6 @@ This is a hackathon, we got 24 hours (some of which I'd like to use for sleep), 
 - Gaze detection to make sure people are actually look at the road - apparently google's tf.js model for that is in development.
 - Proper authentication/alternative methods to communicate with vehicles. Unsecured GET requests to shut down your car is a bit... sketchy.
   We could probably solve this problem with some rotating crypto style-stuff (kinda like U2F), and NOT communicating over web requests (we only did this for demo/concept purposes).
+- Better performance. Not running ML predictions on a separate WebWorker is... yikes.
 
 ## Somehow you made it down here, and we hoped you enjoyed this project!

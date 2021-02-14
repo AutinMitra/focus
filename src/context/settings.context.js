@@ -10,6 +10,7 @@ const defaultValues = {
   sendAlertToURI: '',
   carSpeedCheckEnabled: false,
   carSpeedCheckURI: '',
+  bruhShiJianEnabled: false
 }
 
 const SettingsContext = createContext({})
@@ -26,6 +27,7 @@ export const SettingsProvider = ({ children }) => {
     sendAlertToURI,
     carSpeedCheckEnabled,
     carSpeedCheckURI,
+    bruhShiJianEnabled
   } = JSON.parse(providerInfo)
 
   const [earThresholdVal, setEarThreshold] = useState(earThreshold)
@@ -39,6 +41,7 @@ export const SettingsProvider = ({ children }) => {
     carSpeedCheckEnabled
   )
   const [carSpeedCheckURIVal, setCarSpeedCheckURI] = useState(carSpeedCheckURI)
+  const [bruhShiJianEnabledVal, setBruhShiJianEnabled] = useState(bruhShiJianEnabled)
 
   useEffect(() => {
     localStorage.setItem(
@@ -50,7 +53,8 @@ export const SettingsProvider = ({ children }) => {
         sendAlertToEnabled: sendAlertToEnabledVal,
         sendAlertToURI: sendAlertToURIVal,
         carSpeedCheckEnabled: carSpeedCheckEnabledVal,
-        carSpeedCheckURIVal: carSpeedCheckURIVal,
+        carSpeedCheckURI: carSpeedCheckURIVal,
+        bruhShiJianEnabled: bruhShiJianEnabledVal,
       })
     )
   }, [
@@ -61,6 +65,7 @@ export const SettingsProvider = ({ children }) => {
     sendAlertToURIVal,
     carSpeedCheckEnabledVal,
     carSpeedCheckURIVal,
+    bruhShiJianEnabledVal,
   ])
 
   const resetSettings = () => {
@@ -96,6 +101,7 @@ export const SettingsProvider = ({ children }) => {
         sendAlertToURI: sendAlertToURIVal,
         carSpeedCheckEnabled: carSpeedCheckEnabledVal,
         carSpeedCheckURI: carSpeedCheckURIVal,
+        bruhShiJianEnabled: bruhShiJianEnabledVal,
         // Setters
         setEarThreshold,
         setMaxFPS,
@@ -104,6 +110,7 @@ export const SettingsProvider = ({ children }) => {
         setSendAlertToURI,
         setCarSpeedCheckEnabled,
         setCarSpeedCheckURI,
+        setBruhShiJianEnabled,
         // Misc
         resetSettings,
       }}

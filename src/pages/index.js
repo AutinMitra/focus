@@ -45,6 +45,7 @@ const IndexPage = () => {
     sendAlertToURI,
     carSpeedCheckEnabled,
     carSpeedCheckURI,
+    bruhShiJianEnabled
   } = useSettingsInfo()
 
   const [earState, setEarState] = useState({ left: 0.5, right: 0.5 })
@@ -52,6 +53,7 @@ const IndexPage = () => {
   const webcam = useRef(null)
   const canvas = useRef(null)
   const timer = useRef(null)
+  const audio = useRef(new Audio(bruhShiJianEnabled ? '/bruhshijian.mp3' : '/chime.mp3'))
 
   const checkIfCarRunning = useCallback(async (URI) => {
     try {
@@ -100,6 +102,8 @@ const IndexPage = () => {
   }, [])
 
   useEffect(() => {
+    audio.current.volume = 0.5
+
     const alert = async () => {
       if (earState.left < earThreshold && earState.right < earThreshold) {
         let carIsOn = true
@@ -108,8 +112,8 @@ const IndexPage = () => {
 
         if (carIsOn && sendAlertToEnabled) {
           callAlertToURI(sendAlertToURI)
-        } else if (carIsOn) {
-          // TODO: ALERT NOISE
+        } else if (carIsOn && !audio.current.isPlaying) {
+          audio.current.play()
         }
       }
     }
