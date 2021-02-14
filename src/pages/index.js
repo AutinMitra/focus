@@ -11,6 +11,8 @@ import * as tfjsWasm from '@tensorflow/tfjs-backend-wasm'
 import { useState } from 'react'
 import { useSettingsInfo } from '../context/settings.context'
 import { useCallback } from 'react'
+import { motion } from 'framer-motion'
+import { fadeInUp, staggerAnimation } from '../animation/animations'
 
 tfjsWasm.setWasmPaths(
   `https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@${tfjsWasm.version_wasm}/dist/`
@@ -138,7 +140,7 @@ const IndexPage = () => {
           flex: 1,
         }}
       >
-        <Box>
+        <motion.div initial='initial' animate='animate' variants={staggerAnimation}>
           <Box
             sx={{
               p: 3,
@@ -155,61 +157,67 @@ const IndexPage = () => {
           >
             <Heading as='h3'>Drowsiness detected!</Heading>
           </Box>
-          <Heading
-            as='h1'
-            sx={{
-              fontSize: 7,
-            }}
-          >
-            Focus
-          </Heading>
-          <Heading
-            as='h2'
-            sx={{
-              color: 'rgba(120,120,120,1)',
-            }}
-          >
-            Stay focused while you drive.
-          </Heading>
-          <Flex
-            sx={{
-              mt: 3,
-              flexDirection: 'row',
-            }}
-          >
-            <EarCard direction='left' value={earState.left.toFixed(2)} />
-            <EarCard
-              direction='right'
-              value={earState.right.toFixed(2)}
-              sx={{ ml: 3 }}
-            />
-          </Flex>
-          <Button
-            sx={{
-              mt: 3,
-              width: '100%',
-            }}
-            onClick={() => {
-              clearInterval(timer.current)
-              navigate('/settings')
-            }}
-          >
-            Settings
-          </Button>
-          <Button
-            variant='secondary'
-            sx={{
-              mt: 3,
-              width: '100%',
-            }}
-            onClick={() => {
-              clearInterval(timer.current)
-              navigate('/about')
-            }}
-          >
-            Info / About
-          </Button>
-        </Box>
+          <motion.div variants={fadeInUp()}>
+            <Heading
+              as='h1'
+              sx={{
+                fontSize: 7,
+              }}
+            >
+              Focus
+            </Heading>
+          </motion.div>
+          <motion.div variants={fadeInUp()}>
+            <Heading
+              as='h2'
+              sx={{
+                color: 'rgba(120,120,120,1)',
+              }}
+            >
+              Stay focused while you drive.
+            </Heading>
+          </motion.div>
+          <motion.div variants={fadeInUp()}>
+            <Flex
+              sx={{
+                mt: 3,
+                flexDirection: 'row',
+              }}
+            >
+              <EarCard direction='left' value={earState.left.toFixed(2)} />
+              <EarCard
+                direction='right'
+                value={earState.right.toFixed(2)}
+                sx={{ ml: 3 }}
+              />
+            </Flex>
+            <Button
+              sx={{
+                mt: 3,
+                width: '100%',
+              }}
+              onClick={() => {
+                clearInterval(timer.current)
+                navigate('/settings')
+              }}
+            >
+              Settings
+            </Button>
+            <Button
+              variant='secondary'
+              sx={{
+                mt: 3,
+                width: '100%',
+              }}
+              onClick={() => {
+                clearInterval(timer.current)
+                navigate('/about')
+              }}
+            >
+              Info / About
+            </Button>
+          </motion.div>
+        </motion.div>
       </Flex>
       <Flex
         sx={{
